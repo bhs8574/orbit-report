@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Satellite } from '../satellite';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-orbit-counts',
@@ -9,7 +10,9 @@ import { Satellite } from '../satellite';
 
 export class OrbitCountsComponent implements OnInit {
   @Input() satellites: Satellite[];
-  constructor() { }
+  typeArray: string[] = [];
+  constructor() { 
+  }
 
   checkDebris(): number {
     let debrisTotal : number = 0;
@@ -29,6 +32,19 @@ export class OrbitCountsComponent implements OnInit {
       }
     });
     return typeTotal;
+  }
+
+  checkIfNewType(satellite: Satellite) : boolean {
+    let newType: boolean = false;
+    if (!this.typeArray.includes(satellite.type)) {
+      this.typeArray.push(satellite.type);
+      newType=true;
+    }
+    return newType;
+  }
+
+  clearTypeArray(): void {
+    this.typeArray = [];
   }
 
   ngOnInit(): void {
