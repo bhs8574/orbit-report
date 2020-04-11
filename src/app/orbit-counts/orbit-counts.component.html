@@ -14,13 +14,18 @@
 <div  class="counts" >
    <div>
       <div>
-         Total: <span>{{satellites.length}}</span>
+         Total: <span>{{satellites.length}}</span> {{this.addTypesToArray(satellites)}}
       </div>
    </div>
-   <div *ngFor = "let satellite of satellites" >
+   <div *ngFor="let type of typeArray">
+      <div>{{type}}: <span> {{this.countType(type)}} </span></div>
+   </div>
+   <!--
+   <div *ngFor = "let satellite of satellites">
       <div *ngIf = "checkIfNewType(satellite)">
          {{satellite.type}}: <span>{{this.countType(satellite.type)}}</span>
       </div>
-   </div>
+   </div> 
    {{this.clearTypeArray()}}
+-->
 </div>

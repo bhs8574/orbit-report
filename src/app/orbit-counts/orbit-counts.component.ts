@@ -34,6 +34,16 @@ export class OrbitCountsComponent implements OnInit {
     return typeTotal;
   }
 
+  addTypesToArray(satellites: Satellite[]): void {
+    satellites.forEach(element => {
+      let newType: boolean = false;
+      if (!this.typeArray.includes(element.type)) {
+        this.typeArray.push(element.type);
+        newType=true;
+      }
+    });
+  }
+
   checkIfNewType(satellite: Satellite) : boolean {
     let newType: boolean = false;
     if (!this.typeArray.includes(satellite.type)) {
